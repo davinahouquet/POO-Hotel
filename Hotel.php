@@ -79,11 +79,11 @@ class Hotel
     }
 
     //Méthode pour afficher le nombre de chambre dans l'hôtel
-    public function afficherNbChambres($nbChambres)
+    public function afficherNbChambres()
     {
-        $result = "Nombre de chambre(s) :" . count($nbChambres);
+        $result = "Nombre de chambre(s) :" . count($this->_nbChambres);
 
-        return $result;
+        return $result. "<br>";
     }
 
     //Méthode pour compter le nombre de chambres réservées + retourner le nombre de chambres disponibles
