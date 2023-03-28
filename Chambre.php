@@ -7,8 +7,8 @@ class Chambre{
     private bool $_wifi;
     private bool $_statut;
     
-
-    public function __construct(int $numChambre, int $nbLit, int $prix, bool $wifi, bool $statut){
+//pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
+    public function __construct(int $numChambre, int $nbLit, float $prix, bool $wifi, bool $statut){
         $this->_numChambre = $numChambre;
         $this->_nbLit = $nbLit;
         $this->_prix = $prix;
@@ -87,8 +87,6 @@ class Chambre{
 
         return $this;
     }
-
-
     /**
      * Get the value of statut
      */ 
@@ -107,5 +105,20 @@ class Chambre{
 
         return $this;
     }
+    //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
+    public function afficherWifi($wifi){
+        if($wifi){
+            echo "📶<br>";
+        }
+    }
+
+    //Méthode pour afficher le statut
+    public function afficherStatut($statut){
+        if($statut == 0){
+            return setStatut() = "";
+        } else {
+            return setStatut() = "";
+        }
+}
 }
 ?>

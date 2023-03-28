@@ -6,10 +6,10 @@
     private array $_nbChambres;
 
  
-    public function __construct(string $nom, string $adresse, int $nbChambres){
+    public function __construct(string $nom, string $adresse){
         $this->_nom = $nom;
         $this->_adresse = $adresse;
-        $this->_nbChambres = $nbChambres;
+        $this->_nbChambres = [];
         //Créer une méthode pour compter le nb de chambres reservees et dispos
     }
     public function getNom(){
@@ -49,12 +49,22 @@
      *
      * @return  self
      */ 
-    public function setNbChambres(int $nbChambres)
+    public function setNbChambres(array $nbChambres)
     {
         $this->_nbChambres = $nbChambres;
 
         return $this;
     }
+    //Méthode pour compter le nombre de chambres réservées
+    public function afficherNbChambresReservees($nbChambres, $nbChambresReservees){
+        $result = $nbChambres - $nbChambresReservees;
+        return $result;
+    }
 
-    
+    //Méthode pour compter le nombre de chambres disponibles
+    public function afficherNbChambre (){
+        $result = count($this->getNbChambres());
+        return $result;
+    }
+ 
 }

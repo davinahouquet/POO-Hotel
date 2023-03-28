@@ -7,6 +7,7 @@ class Reservation
     private Chambre $_chambre;
     private DateTime $_dateArrivee;
     private DateTime $_dateDepart;
+    // private float $_prix
 
 //Créer un count array pour afficher le nb de réservation
 // Créeer méthode qui calcule le prix total
@@ -18,6 +19,7 @@ class Reservation
         $this->_chambre = $chambre;
         $this->_dateArrivee = $dateArrivee;
         $this->_dateDepart = $dateDepart;
+        $this->_chambre->addPrix();
         // $this->_hotel = $this->_chambre->getHotel()
         //changer le status de la chambre à reservé
     }
@@ -96,4 +98,26 @@ class Reservation
 
         return $this;
     }
+    //Méthode pour afficher la période de réservation
+    public function afficherDuree(DateTime $dateArrivee, DateTime $dateDepart){
+        $duree = $dateArrivee->diff($dateDepart);
+        return "du " .$dateArrivee." au ".$dateDepart. " ";
+    }
+
+    //Créer un count array pour afficher le nb de réservation
+
+
+    //Méthode qui calcule le prix total (prix de la chambre * nb de jours de réservation)
+    public function afficherprixTotal($chambre, $duree){
+        $result = getPrix() * $duree;
+        return "Total : " .$result;
+    }
+
+    
+
+    //Méthode pour changer le statut de la chambre de dispo à reservée
+    
+
+    
 }
+?>
