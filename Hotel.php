@@ -1,18 +1,23 @@
 <?php
 
  class Hotel{
+    private string $_nom;
     private string $_adresse;
-    private int $_nbChambres;
-    private int $_nbChambresReservees;
-    private int $_nbChambresDispo;
+    private array $_nbChambres;
+
  
-    public function __construct(string $adresse, int $nbChambres, int $_nbChambresReservees, int $_nbChambresDispo){
+    public function __construct(string $nom, string $adresse, int $nbChambres){
+        $this->_nom = $nom;
         $this->_adresse = $adresse;
         $this->_nbChambres = $nbChambres;
-        $this->_nbChambresReservees = $_nbChambresReservees;
-        $this->_nbChambresDispo = $_nbChambresDispo;
+        //Créer une méthode pour compter le nb de chambres reservees et dispos
     }
-    
+    public function getNom(){
+        return $this->_nom;
+    }
+    public function setNom(string $nom){
+        $this->_nom = $nom;
+    }
     /**Getter et setter classe Hôtel :
      * Get the value of adresse
      */
@@ -24,7 +29,7 @@
     /**
      * Set the value of adresse
      */
-    public function setAdresse($adresse): self
+    public function setAdresse(string $adresse): self
     {
         $this->_adresse = $adresse;
 
@@ -44,50 +49,12 @@
      *
      * @return  self
      */ 
-    public function setNbChambres($nbChambres)
+    public function setNbChambres(int $nbChambres)
     {
         $this->_nbChambres = $nbChambres;
 
         return $this;
     }
 
-    /**
-     * Get the value of _nbChambresReservees
-     */ 
-    public function get_nbChambresReservees()
-    {
-        return $this->_nbChambresReservees;
-    }
-
-    /**
-     * Set the value of _nbChambresReservees
-     *
-     * @return  self
-     */ 
-    public function set_nbChambresReservees($_nbChambresReservees)
-    {
-        $this->_nbChambresReservees = $_nbChambresReservees;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of _nbChambresDispo
-     */ 
-    public function get_nbChambresDispo()
-    {
-        return $this->_nbChambresDispo;
-    }
-
-    /**
-     * Set the value of _nbChambresDispo
-     *
-     * @return  self
-     */ 
-    public function set_nbChambresDispo($_nbChambresDispo)
-    {
-        $this->_nbChambresDispo = $_nbChambresDispo;
-
-        return $this;
-    }
+    
 }

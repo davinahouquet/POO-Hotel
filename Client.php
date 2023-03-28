@@ -12,9 +12,27 @@ class Client{
     /**
      * Get the value of nom
      */ 
-    public function getprenom()
+    public function getPrenom()
     {
         return $this->_prenom;
+    }
+    /**
+     * Set the value of nom
+     *
+     * @return  self
+     */ 
+    public function setPrenom(string $prenom)
+    {
+        $this->_prenom = $prenom;
+
+        return $this;
+    }
+    /**
+     * Get the value of nom
+     */ 
+    public function getNom()
+    {
+        return $this->_nom;
     }
 
     /**
@@ -22,7 +40,7 @@ class Client{
      *
      * @return  self
      */ 
-    public function setNom($nom)
+    public function setNom(string $nom)
     {
         $this->_nom = $nom;
 
