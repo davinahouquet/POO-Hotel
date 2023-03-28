@@ -16,17 +16,16 @@ $client2 = new Client ("Micka", "MURMANN");
 
 //Instanciation Hôtel
 $hotel1 = new Hotel ("Hilton **** Strasbourg", "10 route de la Gare 67000 STRASBOURG");
-$hotel2 = new Hotel ("Regent **** Paris", "61 rue Dauphine75006, Paris");
+$hotel2 = new Hotel ("Regent **** Paris", "61 rue Dauphine 75006, PARIS");
 
 //Instanciation Chambre (int $numChambre, int $nbLit, float $prix, bool $wifi, bool $statut)
-$chambre1 = new Chambre (1, 2, 120, $wifi = 0 , $statut = 0);
-$chambre2 = new Chambre (2, 2, 120, $wifi = 0, $statut = 0);
-$chambre3 = new Chambre (3, 2, 120, $wifi = 0, $statut = 1);
-
-$chambre16 = new Chambre (16, 2, 300, $wifi = 1, $statut = 0);
-$chambre17 = new Chambre (17, 2, 300, $wifi = 1, $statut = 1);
-$chambre18 = new Chambre (18, 2, 300, $wifi = 1, $statut = 0);
-$chambre19 = new Chambre (19, 2, 300, $wifi = 1, $statut = 0);
+$chambre1 = new Chambre (1, 2, 120, false ,  $hotel2);
+$chambre2 = new Chambre (2, 2, 120, false,  $hotel2);
+$chambre3 = new Chambre (3, 2, 120, false,  $hotel1);
+$chambre16 = new Chambre (16, 2, 300, false,  $hotel1);
+$chambre17 = new Chambre (17, 2, 300, true,  $hotel1);
+$chambre18 = new Chambre (18, 2, 300, true,  $hotel1);
+$chambre19 = new Chambre (19, 2, 300, true,  $hotel1);
 
 //Instanciation Réservations (Client $client, Chambre $chambre, DateTime $dateArrivee, DateTime $dateDepart)
 // $reservation1 = new Reservation ($client1, $chambre17, '01-01-2021', '01-01-2021');
@@ -35,13 +34,21 @@ $chambre19 = new Chambre (19, 2, 300, $wifi = 1, $statut = 0);
 
 //Tests des méthodes
 
-//afficherHotel(), afficherNbChambre(), afficherNbChambresReservees(), afficherNbChambresDispos(), afficherReservation(), afficherDuree(),
  //afficherprixTotal(), afficherChambre(numéro + nbLits + prix + wifi), afficherStatut()
 echo $hotel1->afficherHotel();
+echo $hotel1->afficherNbChambres();
+echo $hotel1->afficherNbChambresReservees();
+echo $hotel1->afficherNbChambresDispos();
+
 echo $hotel2->afficherHotel();
+echo $hotel2->afficherNbChambres();
+echo $hotel2->afficherNbChambresReservees();
+echo $hotel2->afficherNbChambresDispos();
 
-echo $hotel1->afficherNbChambre();
+// echo $hotel1->afficherReservation();
+// echo $hotel2->afficherReservation();
 
-
+// echo $reservation1->afficherReservation();
+// echo $reservation2->afficherReservation();
 
 ?>

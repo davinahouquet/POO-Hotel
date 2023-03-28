@@ -1,21 +1,26 @@
 <?php
 
- class Hotel{
+class Hotel
+{
     private string $_nom;
     private string $_adresse;
     private array $_nbChambres;
+    private array $_reservations;
 
- 
-    public function __construct(string $nom, string $adresse){
+
+    public function __construct(string $nom, string $adresse)
+    {
         $this->_nom = $nom;
         $this->_adresse = $adresse;
         $this->_nbChambres = [];
-        //Créer une méthode pour compter le nb de chambres reservees et dispos
+        $this->_reservations = [];
     }
-    public function getNom(){
+    public function getNom()
+    {
         return $this->_nom;
     }
-    public function setNom(string $nom){
+    public function setNom(string $nom)
+    {
         $this->_nom = $nom;
     }
     /**Getter et setter classe Hôtel :
@@ -38,7 +43,7 @@
 
     /**
      * Get the value of nbChambres
-     */ 
+     */
     public function getNbChambres()
     {
         return $this->_nbChambres;
@@ -48,7 +53,7 @@
      * Set the value of nbChambres
      *
      * @return  self
-     */ 
+     */
     public function setNbChambres(array $nbChambres)
     {
         $this->_nbChambres = $nbChambres;
@@ -60,36 +65,38 @@
         return $this->getnom();
     }
 
-    
-    public function addChambre(Chambre $nbChambres){
+
+    public function addChambre(Chambre $nbChambres)
+    {
         $this->_nbChambres[] = $nbChambres;
     }
-    
+
     //Méthode pour afficher l'Hôtel
-    public function afficherHotel(){
-        $result = $this->getnom()." " .$this->getadresse();
-        return $result."<br>";
+    public function afficherHotel()
+    {
+        $result = $this->getnom() . " " . $this->getadresse();
+        return $result . "<br>";
     }
 
     //Méthode pour afficher le nombre de chambre dans l'hôtel
-    public function afficherNbChambre($nbChambres){
-        $result = "Nombre de chambre(s) :";
-        foreach($this->_nbChambres as $chambres){
-            $result .= count($chambres);
-        }
+    public function afficherNbChambres($nbChambres)
+    {
+        $result = "Nombre de chambre(s) :" . count($nbChambres);
+
         return $result;
     }
 
     //Méthode pour compter le nombre de chambres réservées + retourner le nombre de chambres disponibles
-    public function afficherNbChambresReservees($nbChambres, $nbChambresDispos){
-        $result = $nbChambres - $nbChambresDispos;
-        return $result;
+    public function afficherNbChambresReservees()
+    {
+        $result =  count($this->_reservations);
+        return "Nombre de chambres réservées :" .$result."<br>";
     }
 
     //Méthode pour afficher le nombre de chambres dispos
-    public function afficherNbChambresDispos($nbChambres, $nbChambresReservees){
-        $result = $nbChambres - $nbChambresReservees;
-        return $result;
+    public function afficherNbChambresDispos()
+    {
+        $result = count($this->_nbChambres) - count($this->_reservations);
+        return "Nombre de chambres disponibles:".$result."<br><br>";
     }
-
 }

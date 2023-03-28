@@ -12,15 +12,15 @@ class Reservation
 //Créer un count array pour afficher le nb de réservation
 // Créeer méthode qui calcule le prix total
 
-    public function __construct(Client $client, Chambre $chambre, DateTime $dateArrivee, DateTime $dateDepart)
+    public function __construct(Client $client, Chambre $chambre, string $dateArrivee, string $dateDepart)
     {
         $this->_client = $client;
-        $this->_hotel = $this->_chambre->getHotel();
-        $this->_chambre = $chambre->getChambre();
-        $this->_dateArrivee = $dateArrivee;
-        $this->_dateDepart = $dateDepart;
-        $this->_hotel = $this->_chambre->addPrix($this);
-        $this->_chambre = [];
+        $this->_hotel = $chambre->getHotel();
+        $this->_chambre = $chambre;
+        $this->_dateArrivee = new DateTime ($dateArrivee);
+        $this->_dateDepart = new DateTime ($dateDepart);
+        // $this->_hotel = $this->_chambre->addPrix($this);
+        // $this->_chambre = [];
         // $this->_hotel = $this->_chambre->getHotel()
         //changer le status de la chambre à reservé
     }
@@ -101,27 +101,31 @@ class Reservation
     }
 
     //Méthode Réservation d'un client
-    public function afficherReservation(array $chambre){
-        $result = "Reservations de " .$this->_client."<br>"; 
-        foreach($chambre as $chambres){
-            echo count($chambres). "RESERVATIONS";
-        }
-    }
+    // public function afficherReservationClient(array $chambre){
+    //     $result = "Reservations de " .$this->_client."<br>"; 
+    //     foreach($chambre as $chambres){
+    //         echo count($chambres). "RESERVATIONS";
+    //     }
+    // }
 
     //Méthode pour afficher la période de réservation
-    public function afficherDuree(DateTime $dateArrivee, DateTime $dateDepart){
-        $duree = $this->getdateArrivee()->diff($this->getdateDepart());
-        return "du " .date_format($dateArrivee, 'd-m-Y')." au ".date_format($dateDepart, 'd-m-Y'). " ";
-    }
+    // public function afficherDuree(DateTime $dateArrivee, DateTime $dateDepart){
+    //     // $result = $this->getdateArrivee()->diff($this->getdateDepart());
+    //     $result = "du " .date_format($dateArrivee, 'd-m-Y')." au ".date_format($dateDepart, 'd-m-Y'). " ";
+    //     return $result;
+    // }
 
     //Créer un count array pour afficher le nb de réservation =/= de la méthode pour compter le nombre de chambres réservées
 
 
     //Méthode qui calcule le prix total (prix de la chambre * nb de jours de réservation)
-    public function afficherprixTotal($duree){
-        $result = $this->getChambre()->getPrix() * $duree;
-        return "Total : " .$result. "€";
-    }
+    // public function afficherprixTotal($duree){
+    //     $result = $this->getChambre()->getPrix() * $duree;
+    //     return "Total : " .$result. "€";
+    // }
 
+    // public function afficherReservationHotel(){
+    //     $result = $this->getClient(). " - ".$this->getChambre(). " - " .$this->afficherDuree();
+    // }
 }
 ?>

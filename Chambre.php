@@ -6,14 +6,15 @@ class Chambre{
     private float $_prix;
     private bool $_wifi;
     private bool $_statut;
-    
+    private Hotel $_hotel;
 //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
-    public function __construct(int $numChambre, int $nbLit, float $prix, bool $wifi, bool $statut){
+    public function __construct(int $numChambre, int $nbLit, float $prix, bool $wifi, Hotel $hotel){
         $this->_numChambre = $numChambre;
         $this->_nbLit = $nbLit;
         $this->_prix = $prix;
         $this->_wifi = $wifi;
-        $this->_statut = $statut;
+        $this->_statut = true;
+        $this->_hotel = $hotel;
     }
     /**
      * Get the value of numChambre
@@ -105,10 +106,27 @@ class Chambre{
 
         return $this;
     }
+    /**
+     * Get the value of hotel
+     */
+    public function getHotel()
+    {
+        return $this->_hotel;
+    }
+
+    /**
+     * Set the value of hotel
+     */
+    public function setHotel(Hotel$hotel): self
+    {
+        $this->_hotel = $hotel;
+
+        return $this;
+    }
 
     public function afficherChambre($wifi){
         $result = $this->getnumChambre(). " " .$this->getnbLit()." " .$this->getprix(). "€";
-        if($wifi == 1){
+        if($wifi == true){
             $result .= "📶<br>";
         } else {
             $result .= " ";
@@ -116,19 +134,13 @@ class Chambre{
     }
     //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
     
-    // //Méthode pour afficher le prix total (initialement mis dans Réservation)
-    // public function afficherprixTotal($chambre, $duree){
-    //     $result = $this->getPrix() * $duree;
-    //     return "Total : " .$result;
-    // }
     //Méthode pour afficher le statut
     public function afficherStatut(bool $statut){
-        if($statut == 0){
+        if($statut == true){
             echo $statut = "Disponible";
         } else {
             echo $statut = "Reservée";
         }
 }
-
 }
 ?>
