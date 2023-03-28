@@ -55,16 +55,21 @@
 
         return $this;
     }
-    //Méthode pour compter le nombre de chambres réservées
-    public function afficherNbChambresReservees($nbChambres, $nbChambresReservees){
-        $result = $nbChambres - $nbChambresReservees;
-        return $result;
+
+    public function addChambre(Chambre $nbChambres){
+        $this->_nbChambres[] = $nbChambres;
     }
 
-    //Méthode pour compter le nombre de chambres disponibles
+    //Méthode pour compter le nombre de chambres
     public function afficherNbChambre (){
         $result = count($this->getNbChambres());
         return $result;
     }
  
+    //Méthode pour compter le nombre de chambres réservées + retourner le nombre de chambres disponibles
+    public function afficherNbChambresReservees($nbChambres, $nbChambresReservees){
+        $result = $nbChambres - $nbChambresReservees;
+        return $result;
+    }
+
 }

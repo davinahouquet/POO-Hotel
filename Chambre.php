@@ -111,14 +111,19 @@ class Chambre{
             echo "📶<br>";
         }
     }
+    //Méthode pour afficher le prix total (initialement mis dans Réservation)
 
+    public function afficherprixTotal($chambre, $duree){
+        $result = $this->getPrix() * $duree;
+        return "Total : " .$result;
+    }
     //Méthode pour afficher le statut
-    public function afficherStatut($statut){
-        if($statut == 0){
-            return setStatut() = "";
-        } else {
-            return setStatut() = "";
-        }
-}
+//     public function afficherStatut($statut){
+//         if($statut == 0){
+//             return setStatut() = "";
+//         } else {
+//             return setStatut() = "";
+//         }
+// }
 }
 ?>
