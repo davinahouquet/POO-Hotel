@@ -55,14 +55,22 @@
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->getnom();
+    }
 
+    
     public function addChambre(Chambre $nbChambres){
         $this->_nbChambres[] = $nbChambres;
     }
-
-    //Méthode pour compter le nombre de chambres
-    public function afficherNbChambre (){
-        $result = count($this->getNbChambres());
+    
+    //Méthode pour afficher l'Hôtel et pour compter le nombre de chambres
+    public function afficherHotel($chambres){
+        $result = $this->getnom() .$this->getadresse(). " Nombre de chambre(s) :";
+        foreach($this->_nbChambres as $chambres){
+            $result .= count($chambres);
+        }
         return $result;
     }
  

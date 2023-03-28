@@ -107,23 +107,24 @@ class Chambre{
     }
     //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
     public function afficherWifi($wifi){
-        if($wifi){
+        if($wifi == 1){
             echo "📶<br>";
+        } else {
+            echo" ";
         }
     }
     //Méthode pour afficher le prix total (initialement mis dans Réservation)
-
     public function afficherprixTotal($chambre, $duree){
         $result = $this->getPrix() * $duree;
         return "Total : " .$result;
     }
     //Méthode pour afficher le statut
-//     public function afficherStatut($statut){
-//         if($statut == 0){
-//             return setStatut() = "";
-//         } else {
-//             return setStatut() = "";
-//         }
-// }
+    public function afficherStatut(bool $statut){
+        if($statut == 0){
+            echo $statut = "Disponible";
+        } else {
+            echo $statut = "Reservée";
+        }
+}
 }
 ?>
