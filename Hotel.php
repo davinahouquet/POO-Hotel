@@ -65,17 +65,29 @@
         $this->_nbChambres[] = $nbChambres;
     }
     
-    //Méthode pour afficher l'Hôtel et pour compter le nombre de chambres
-    public function afficherHotel($chambres){
-        $result = $this->getnom() .$this->getadresse(). " Nombre de chambre(s) :";
+    //Méthode pour afficher l'Hôtel
+    public function afficherHotel(){
+        $result = $this->getnom()." " .$this->getadresse();
+        return $result."<br>";
+    }
+
+    //Méthode pour afficher le nombre de chambre dans l'hôtel
+    public function afficherNbChambre($nbChambres){
+        $result = "Nombre de chambre(s) :";
         foreach($this->_nbChambres as $chambres){
             $result .= count($chambres);
         }
         return $result;
     }
- 
+
     //Méthode pour compter le nombre de chambres réservées + retourner le nombre de chambres disponibles
-    public function afficherNbChambresReservees($nbChambres, $nbChambresReservees){
+    public function afficherNbChambresReservees($nbChambres, $nbChambresDispos){
+        $result = $nbChambres - $nbChambresDispos;
+        return $result;
+    }
+
+    //Méthode pour afficher le nombre de chambres dispos
+    public function afficherNbChambresDispos($nbChambres, $nbChambresReservees){
         $result = $nbChambres - $nbChambresReservees;
         return $result;
     }

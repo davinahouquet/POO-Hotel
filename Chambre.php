@@ -105,19 +105,22 @@ class Chambre{
 
         return $this;
     }
-    //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
-    public function afficherWifi($wifi){
+
+    public function afficherChambre($wifi){
+        $result = $this->getnumChambre(). " " .$this->getnbLit()." " .$this->getprix(). "€";
         if($wifi == 1){
-            echo "📶<br>";
+            $result .= "📶<br>";
         } else {
-            echo" ";
+            $result .= " ";
         }
     }
-    //Méthode pour afficher le prix total (initialement mis dans Réservation)
-    public function afficherprixTotal($chambre, $duree){
-        $result = $this->getPrix() * $duree;
-        return "Total : " .$result;
-    }
+    //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
+    
+    // //Méthode pour afficher le prix total (initialement mis dans Réservation)
+    // public function afficherprixTotal($chambre, $duree){
+    //     $result = $this->getPrix() * $duree;
+    //     return "Total : " .$result;
+    // }
     //Méthode pour afficher le statut
     public function afficherStatut(bool $statut){
         if($statut == 0){
@@ -126,5 +129,6 @@ class Chambre{
             echo $statut = "Reservée";
         }
 }
+
 }
 ?>

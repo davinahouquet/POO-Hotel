@@ -77,7 +77,7 @@ class Reservation
      */ 
     public function setDateArrivee(DateTime $dateArrivee)
     {
-        $this->_dateArrivee = $dateArrivee;
+        $this->_dateArrivee = date_format($dateArrivee, 'd-m-Y');
 
         return $this;
     }
@@ -95,7 +95,7 @@ class Reservation
      */
     public function setDateDepart(DateTime $dateDepart): self
     {
-        $this->_dateDepart = $dateDepart;
+        $this->_dateDepart = date_format($dateDepart, 'd-m-Y');
 
         return $this;
     }
@@ -110,8 +110,8 @@ class Reservation
 
     //Méthode pour afficher la période de réservation
     public function afficherDuree(DateTime $dateArrivee, DateTime $dateDepart){
-        $duree = $dateArrivee->diff($dateDepart);
-        return "du " .$dateArrivee." au ".$dateDepart. " ";
+        $duree = $this->getdateArrivee()->diff($this->getdateDepart());
+        return "du " .date_format($dateArrivee, 'd-m-Y')." au ".date_format($dateDepart, 'd-m-Y'). " ";
     }
 
     //Créer un count array pour afficher le nb de réservation =/= de la méthode pour compter le nombre de chambres réservées
