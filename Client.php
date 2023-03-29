@@ -10,38 +10,22 @@ class Client{
         $this->_nom = $nom;
         $this->_reservations = [];
     }
-
-    /**
-     * Get the value of nom
-     */ 
     public function getPrenom()
     {
         return $this->_prenom;
     }
-    /**
-     * Set the value of nom
-     *
-     * @return  self
-     */ 
+ 
     public function setPrenom(string $prenom)
     {
         $this->_prenom = $prenom;
 
         return $this;
     }
-    /**
-     * Get the value of nom
-     */ 
+ 
     public function getNom()
     {
         return $this->_nom;
     }
-
-    /**
-     * Set the value of nom
-     *
-     * @return  self
-     */ 
     public function setNom(string $nom)
     {
         $this->_nom = $nom;

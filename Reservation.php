@@ -68,6 +68,10 @@ class Reservation
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->_chambre->getHotel().$this->_chambre. $this->_dateArrivee->format("d-m-Y")." au ".$this->_dateDepart->format("d-m-Y");  ;
+    }
     //Méthode Réservation d'un client
     // public function afficherReservationClient(array $chambre){
     //     $result = "Reservations de " .$this->_client."<br>"; 

@@ -46,7 +46,7 @@ class Hotel
     }
     public function __toString()
     {
-        return $this->getnom();
+        return $this->_nom;
     }
     public function addChambre(Chambre $nbChambres)
     {
@@ -60,9 +60,10 @@ class Hotel
     public function getReservations() : array{
         return $this->_reservations;
     }
-    public function setReservations(Reservation $reservations){
-        array_push($this->_reservations, $reservations);
-    }
+    // public function setReservations(Reservation $reservations){
+    //     array_push($this->_reservations, $reservations);
+    // }
+
     //Méthode pour afficher l'Hôtel
     public function afficherHotel()
     {
@@ -93,13 +94,13 @@ class Hotel
     }
    //Méthode pour afficher les réservations d'un hôtel
    public function afficherReservations() : string {
-    $result = "Réservations de l'Hôtel ".$this->getNom()." <br> ";
-    if(empty($reservationsHotel)){
+    $result = "Réservations de l'Hôtel ".$this->_nom." <br> ";
+    if(empty($this->_reservations)){
         $result .= "Aucune réservation<br>";
        } else {
         echo count($this->_reservations)." réservations<br>";
         foreach ($this->_reservations as $reservation){
-            $result .= $reservation->getClient()." - Chambre " .$reservation->getChambre()->getNumChambre()." - du".$reservation->getDateArrivee()->format("d-m-Y")." au ".$reservation->getDateDepart()->format("d-m-Y"). "<br>";
+            $result .= $reservation->getClient()." - Chambre " .$reservation->getChambre()->getNumChambre()." - ".$reservation->getDateArrivee()." au ".$reservation->getDateDepart(). "<br>";
        }
     }
     return $result;
