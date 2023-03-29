@@ -58,4 +58,7 @@ echo $hotel1->afficherReservations();
 echo $hotel2->afficherReservations();
 echo $hotel3->afficherReservations();
 
+echo $client1->reservationsClient();
+echo $client2->reservationsClient();
+
 ?>

@@ -46,5 +46,14 @@ class Client{
         $this->_reservations[] = $reservations;
     }
 
+    //Méthode pour afficher les réservations d'un client
+    public function reservationsClient(){
+        $result = "Réservations de " .$this. "<br>";
+        echo count($this->_reservations);
+        foreach($this->_reservations as $reservation){
+           $result .= "$reservation<br>";
+        }
+        return $result;
+    }
 }
 ?>

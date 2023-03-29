@@ -74,7 +74,7 @@ class Hotel
     //Méthode pour afficher le nombre de chambre dans l'hôtel
     public function afficherNbChambres()
     {
-        $result = "Nombre de chambre(s) :" . count($this->_nbChambres);
+        $result = "Nombre de chambres :" . count($this->_nbChambres);
 
         return $result. "<br>";
     }
@@ -83,18 +83,18 @@ class Hotel
     public function afficherNbChambresReservees()
     {
         $result =  count($this->_reservations);
-        return "Nombre de chambres réservées :" .$result."<br>";
+        return "Nombre de chambre(s) réservée(s) :" .$result."<br>";
     }
 
     //Méthode pour afficher le nombre de chambres dispos
     public function afficherNbChambresDispos()
     {
         $result = count($this->_nbChambres) - count($this->_reservations);
-        return "Nombre de chambres disponibles:".$result."<br><br>";
+        return "Nombre de chambre(s) disponible(s):".$result."<br><br>";
     }
    //Méthode pour afficher les réservations d'un hôtel
    public function afficherReservations() : string {
-    $result = "Réservations de l'Hôtel ".$this->_nom." <br> ";
+    $result = "<br>Réservations de l'Hôtel ".$this->_nom." <br> ";
     if(empty($this->_reservations)){
         $result .= "Aucune réservation<br>";
        } else {
@@ -106,4 +106,5 @@ class Hotel
     return $result;
 }
 }
+
 ?>
