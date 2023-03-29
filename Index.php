@@ -22,15 +22,16 @@ $hotel2 = new Hotel ("Regent **** Paris", "61 rue Dauphine 75006, PARIS");
 $chambre1 = new Chambre (1, 2, 120, false ,  $hotel2);
 $chambre2 = new Chambre (2, 2, 120, false,  $hotel2);
 $chambre3 = new Chambre (3, 2, 120, false,  $hotel1);
+$chambre4 = new Chambre (4, 4, 300, false, $hotel1);
 $chambre16 = new Chambre (16, 2, 300, false,  $hotel1);
 $chambre17 = new Chambre (17, 2, 300, true,  $hotel1);
 $chambre18 = new Chambre (18, 2, 300, true,  $hotel1);
 $chambre19 = new Chambre (19, 2, 300, true,  $hotel1);
 
 //Instanciation Réservations (Client $client, Chambre $chambre, DateTime $dateArrivee, DateTime $dateDepart)
-// $reservation1 = new Reservation ($client1, $chambre17, '01-01-2021', '01-01-2021');
-// $reservation2 = new Reservation ($client2, $chambre3, '11-03-2021', '11-03-2021');
-// $reservation3 = new Reservation ($client2,$chambre4, '01-04-2021', '01-04-2021');
+$reservation1 = new Reservation ($client1, $chambre17, '01-01-2021', '01-01-2021');
+$reservation2 = new Reservation ($client2, $chambre3, '11-03-2021', '11-03-2021');
+$reservation3 = new Reservation ($client2,$chambre4, '01-04-2021', '01-04-2021');
 
 //Tests des méthodes
 
@@ -45,8 +46,9 @@ echo $hotel2->afficherNbChambres();
 echo $hotel2->afficherNbChambresReservees();
 echo $hotel2->afficherNbChambresDispos();
 
-// echo $hotel1->afficherReservation();
-// echo $hotel2->afficherReservation();
+echo $reservation1->afficherReservationHotel();
+echo $reservation2->afficherReservationHotel();
+echo $reservation3->afficherReservationHotel();
 
 // echo $reservation1->afficherReservation();
 // echo $reservation2->afficherReservation();

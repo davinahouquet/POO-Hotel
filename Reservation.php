@@ -65,9 +65,9 @@ class Reservation
     /**
      * Get the value of dateArrivee
      */ 
-    public function getDateArrivee()
+    public function getDateArrivee() : string
     {
-        return $this->_dateArrivee;
+        return "du " .$this->_dateArrivee->format("d-m-Y")." au ".$this->_dateDepart->format("d-m-Y");
     }
 
     /**
@@ -77,7 +77,7 @@ class Reservation
      */ 
     public function setDateArrivee(DateTime $dateArrivee)
     {
-        $this->_dateArrivee = date_format($dateArrivee, 'd-m-Y');
+        $this->_dateArrivee = $dateArrivee;
 
         return $this;
     }
@@ -87,7 +87,7 @@ class Reservation
      */
     public function getDateDepart()
     {
-        return $this->_dateDepart;
+        return $this->_dateDepart->format("d-m-Y");
     }
 
     /**
@@ -95,7 +95,7 @@ class Reservation
      */
     public function setDateDepart(DateTime $dateDepart): self
     {
-        $this->_dateDepart = date_format($dateDepart, 'd-m-Y');
+        $this->_dateDepart = $dateDepart;
 
         return $this;
     }
@@ -107,14 +107,7 @@ class Reservation
     //         echo count($chambres). "RESERVATIONS";
     //     }
     // }
-
-    //Méthode pour afficher la période de réservation
-    // public function afficherDuree(DateTime $dateArrivee, DateTime $dateDepart){
-    //     // $result = $this->getdateArrivee()->diff($this->getdateDepart());
-    //     $result = "du " .date_format($dateArrivee, 'd-m-Y')." au ".date_format($dateDepart, 'd-m-Y'). " ";
-    //     return $result;
-    // }
-
+    
     //Créer un count array pour afficher le nb de réservation =/= de la méthode pour compter le nombre de chambres réservées
 
 
@@ -124,8 +117,9 @@ class Reservation
     //     return "Total : " .$result. "€";
     // }
 
-    // public function afficherReservationHotel(){
-    //     $result = $this->getClient(). " - ".$this->getChambre(). " - " .$this->afficherDuree();
-    // }
+    public function afficherReservationHotel(){
+        $result = $this->_client. " - Chambre".$this->getChambre(). " -" .$this->getDateArrivee(). "<br>";
+        return $result;
+    }
 }
 ?>

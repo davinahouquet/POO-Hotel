@@ -117,7 +117,7 @@ class Chambre{
     /**
      * Set the value of hotel
      */
-    public function setHotel(Hotel$hotel): self
+    public function setHotel(Hotel $hotel): self
     {
         $this->_hotel = $hotel;
 
@@ -141,6 +141,10 @@ class Chambre{
         } else {
             echo $statut = "Reservée";
         }
+}
+public function __toString()
+{
+    return $this->getStatut();
 }
 }
 ?>
