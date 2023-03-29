@@ -5,7 +5,7 @@ class Hotel
     private string $_nom;
     private string $_adresse;
     private array $_nbChambres;
-    private array $_reservations;
+    private array $_reservationsHotel;
 
 
     public function __construct(string $nom, string $adresse)
@@ -13,7 +13,7 @@ class Hotel
         $this->_nom = $nom;
         $this->_adresse = $adresse;
         $this->_nbChambres = [];
-        $this->_reservations = [];
+        $this->_reservationsHotel = [];
     }
     public function getNom()
     {
@@ -64,13 +64,20 @@ class Hotel
     {
         return $this->getnom();
     }
-
-
     public function addChambre(Chambre $nbChambres)
     {
         $this->_nbChambres[] = $nbChambres;
     }
-
+    public function addReservationsHotel(Reservation $_reservationsHotel){
+        return $this->_reservationsHotel;
+    }
+    //Getter et setter de l'array reservationsHotel
+    public function getReservationsHotel() : array{
+        return $this->_reservationsHotel;
+    }
+    public function setReservationsHotel(Reservation $reservationsHotel){
+        array_push($this->_reservationsHotel, $reservationsHotel);
+    }
     //Méthode pour afficher l'Hôtel
     public function afficherHotel()
     {
@@ -89,14 +96,28 @@ class Hotel
     //Méthode pour compter le nombre de chambres réservées + retourner le nombre de chambres disponibles
     public function afficherNbChambresReservees()
     {
-        $result =  count($this->_reservations);
+        $result =  count($this->_reservationsHotel);
         return "Nombre de chambres réservées :" .$result."<br>";
     }
 
     //Méthode pour afficher le nombre de chambres dispos
     public function afficherNbChambresDispos()
     {
-        $result = count($this->_nbChambres) - count($this->_reservations);
+        $result = count($this->_nbChambres) - count($this->_reservationsHotel);
         return "Nombre de chambres disponibles:".$result."<br><br>";
     }
+   //Méthode pour afficher les réservations d'un hôtel
+   public function afficherReservationsHotel() : string {
+    $result = "Réservations de l'Hôtel ".$this->getNom()." <br> ";
+    if(empty($reservationsHotel)){
+        $result .= "Aucune réservation<br>";
+       } else {
+        echo count($this->_reservationsHotel)." réservations<br>";
+        foreach ($this->_reservationsHotel as $reservation){
+        $result .= $reservation->getClient()." - Chambre " .$reservation->getChambre()->getNumChambre()." - du".$reservation->getDateArrivee()->format("d-m-Y")." au ".$reservation->getDateDepart()->format("d-m-Y"). "<br>";
+       }
+    }
+    return $result;
 }
+}
+?>
