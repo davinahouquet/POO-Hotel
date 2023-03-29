@@ -90,24 +90,26 @@ class Chambre{
         return $this;
     }
 
-    public function afficherChambre($wifi){
-        $result = $this->getnumChambre(). " " .$this->getnbLit()." " .$this->getprix(). "€";
-        if($wifi == true){
-            $result .= "📶<br>";
-        } else {
-            $result .= " ";
-        }
-    }
+    // public function afficherChambre($wifi){
+    //     $result = $this->getnumChambre(). " " .$this->getnbLit()." " .$this->getprix(). "€";
+    //     if($wifi == true){
+    //         $result .= "📶<br>";
+    //     } else {
+    //         $result .= " ";
+    //     }
+    // }
     //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
     
     //Méthode pour afficher le statut
-    public function afficherStatut(bool $statut){
+    public function afficherStatut($statut) : bool {
         if($statut == true){
-            echo $statut = "Disponible";
+         $statut = "Disponible";
         } else {
-            echo $statut = "Reservée";
+         $statut = "Reservée";
         }
+        return $statut;
     }
+
     public function __toString()
     {
         $wifi = ($this->_wifi)? "oui" : "non";
