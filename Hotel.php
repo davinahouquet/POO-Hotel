@@ -5,7 +5,7 @@ class Hotel
     private string $_nom;
     private string $_adresse;
     private array $_nbChambres;
-    private array $_reservationsHotel;
+    private array $_reservations;
 
 
     public function __construct(string $nom, string $adresse)
@@ -13,7 +13,7 @@ class Hotel
         $this->_nom = $nom;
         $this->_adresse = $adresse;
         $this->_nbChambres = [];
-        $this->_reservationsHotel = [];
+        $this->_reservations = [];
     }
     public function getNom()
     {
@@ -23,37 +23,21 @@ class Hotel
     {
         $this->_nom = $nom;
     }
-    /**Getter et setter classe Hôtel :
-     * Get the value of adresse
-     */
     public function getAdresse()
     {
         return $this->_adresse;
     }
-
-    /**
-     * Set the value of adresse
-     */
     public function setAdresse(string $adresse): self
     {
         $this->_adresse = $adresse;
 
         return $this;
     }
-
-    /**
-     * Get the value of nbChambres
-     */
-    public function getNbChambres()
+    public function getNbChambres() : array
     {
         return $this->_nbChambres;
     }
 
-    /**
-     * Set the value of nbChambres
-     *
-     * @return  self
-     */
     public function setNbChambres(array $nbChambres)
     {
         $this->_nbChambres = $nbChambres;
@@ -68,15 +52,16 @@ class Hotel
     {
         $this->_nbChambres[] = $nbChambres;
     }
-    public function addReservationsHotel(Reservation $_reservationsHotel){
-        return $this->_reservationsHotel;
+    //Méthode pour ajouter des réservations au tableau de réservations
+    public function addReservations(Reservation $_reservations){
+        $this->_reservations[] = $_reservations;
     }
     //Getter et setter de l'array reservationsHotel
-    public function getReservationsHotel() : array{
-        return $this->_reservationsHotel;
+    public function getReservations() : array{
+        return $this->_reservations;
     }
-    public function setReservationsHotel(Reservation $reservationsHotel){
-        array_push($this->_reservationsHotel, $reservationsHotel);
+    public function setReservations(Reservation $reservations){
+        array_push($this->_reservations, $reservations);
     }
     //Méthode pour afficher l'Hôtel
     public function afficherHotel()
@@ -93,28 +78,28 @@ class Hotel
         return $result. "<br>";
     }
 
-    //Méthode pour compter le nombre de chambres réservées + retourner le nombre de chambres disponibles
+    //Méthode pour compter le nombre de chambres réservées
     public function afficherNbChambresReservees()
     {
-        $result =  count($this->_reservationsHotel);
+        $result =  count($this->_reservations);
         return "Nombre de chambres réservées :" .$result."<br>";
     }
 
     //Méthode pour afficher le nombre de chambres dispos
     public function afficherNbChambresDispos()
     {
-        $result = count($this->_nbChambres) - count($this->_reservationsHotel);
+        $result = count($this->_nbChambres) - count($this->_reservations);
         return "Nombre de chambres disponibles:".$result."<br><br>";
     }
    //Méthode pour afficher les réservations d'un hôtel
-   public function afficherReservationsHotel() : string {
+   public function afficherReservations() : string {
     $result = "Réservations de l'Hôtel ".$this->getNom()." <br> ";
     if(empty($reservationsHotel)){
         $result .= "Aucune réservation<br>";
        } else {
-        echo count($this->_reservationsHotel)." réservations<br>";
-        foreach ($this->_reservationsHotel as $reservation){
-        $result .= $reservation->getClient()." - Chambre " .$reservation->getChambre()->getNumChambre()." - du".$reservation->getDateArrivee()->format("d-m-Y")." au ".$reservation->getDateDepart()->format("d-m-Y"). "<br>";
+        echo count($this->_reservations)." réservations<br>";
+        foreach ($this->_reservations as $reservation){
+            $result .= $reservation->getClient()." - Chambre " .$reservation->getChambre()->getNumChambre()." - du".$reservation->getDateArrivee()->format("d-m-Y")." au ".$reservation->getDateDepart()->format("d-m-Y"). "<br>";
        }
     }
     return $result;

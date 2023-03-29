@@ -3,10 +3,12 @@
 class Client{
     private string $_prenom;
     private string $_nom;
+    private array $_reservations;
 
     public function __construct(string $prenom, string $nom){
         $this->_prenom = $prenom;
         $this->_nom = $nom;
+        $this->_reservations = [];
     }
 
     /**
@@ -46,9 +48,19 @@ class Client{
 
         return $this;
     }
+    public function getReservations() : array {
+        return $this->_reservations;
+    }
+    public function setReservations(array $reservations){
+        $this->_reservations = $reservations;
+    }
     public function __toString()
     {
-        return $this->getPrenom()." " .$this->getNom();
+        return $this->_prenom." " .$this->_nom;
     }
+    public function addReservations(Reservation $reservations) {
+        $this->_reservations[] = $reservations;
+    }
+
 }
 ?>
