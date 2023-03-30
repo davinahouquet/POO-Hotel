@@ -22,6 +22,7 @@ class Reservation
         $hotel = $chambre->getHotel();
         $hotel->addReservations($this);
         $client->addReservations($this);
+        $chambre->addReservations($this);
 
 
     }

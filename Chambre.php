@@ -7,6 +7,7 @@ class Chambre{
     private bool $_wifi;
     private bool $_statut;
     private Hotel $_hotel;
+    private array $_reservations;
 //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
     public function __construct(int $numChambre, int $nbLit, float $prix, bool $wifi, Hotel $hotel){
         $this->_numChambre = $numChambre;
@@ -16,6 +17,7 @@ class Chambre{
         $this->_statut = true;
         $this->_hotel = $hotel;
         $hotel->addChambre($this);
+        $this->_reservations =[];
     }
     
     public function getNumChambre()
@@ -90,6 +92,9 @@ class Chambre{
         return $this;
     }
 
+    public function addReservations(Reservation $_reservations){
+        $this->_reservations[] = $_reservations;
+    }
     // public function afficherChambre($wifi){
     //     $result = $this->getnumChambre(). " " .$this->getnbLit()." " .$this->getprix(). "€";
     //     if($wifi == true){
@@ -101,14 +106,18 @@ class Chambre{
     //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
     
     //Méthode pour afficher le statut
-    public function afficherStatut($statut) : bool {
-        if($statut == true){
-         $statut = "Disponible";
+    public function afficherStatut(){
+        if(empty($reservations)){
+            $result = "Chambre" .$this->_numChambre." Disponible<br>";
         } else {
-         $statut = "Reservée";
+            $result = "Chambre" .$this->_numChambre." Indisponible<br>";
         }
-        return $statut;
+        return $result;
     }
+    // public function afficherStatut() : bool {
+    //     $statut = ($this->_statut)? "Disponible" : "Réservée";
+    //     return "Chambre".$this->_numChambre." ".$statut;
+    // }
 
     public function __toString()
     {

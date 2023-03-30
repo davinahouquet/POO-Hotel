@@ -62,4 +62,6 @@ echo $client1->reservationsClient();
 echo $client2->reservationsClient();
 
 //Reste à faire : tester afficher le statut de la chambre + mise en forme
+$chambre1->afficherStatut();
+
 ?>
