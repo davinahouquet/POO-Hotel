@@ -102,6 +102,14 @@ class Hotel
     }
     return $result;
 }
-
+    public function getEtatChambre(){
+        foreach($this->getNbChambres() as $chambre){
+            $statut  =($chambre->getIsReserved()) ? "Reservée" : " Disponible";
+            $numChambre = ($chambre->getNumChambre());
+            $wifi = ($chambre->getWifi())? "oui" : "non";
+            $result = $numChambre." ".$chambre->getPrix()." ".$wifi." ".$statut."<br>";
+        }
+        return $result;
+    }
 }
 ?>

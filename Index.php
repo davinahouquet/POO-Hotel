@@ -23,9 +23,20 @@ $chambre1 = new Chambre (1, 2, 120, false ,  $hotel2);
 $chambre2 = new Chambre (2, 2, 120, false,  $hotel2);
 $chambre3 = new Chambre (3, 2, 120, false,  $hotel1);
 $chambre4 = new Chambre (4, 4, 300, false, $hotel1);
-$chambre16 = new Chambre (16, 2, 300, false,  $hotel1);
+$chambre5 = new Chambre (5, 4, 300, false, $hotel1);
+$chambre6 = new Chambre (6, 4, 300, false, $hotel1);
+$chambre7 = new Chambre (7, 4, 300, false, $hotel1);
+$chambre8 = new Chambre (8, 6, 500, false, $hotel2);
+$chambre9 = new Chambre (9, 4, 300, false, $hotel1);
+$chambre10 = new Chambre (10, 5, 300, false, $hotel1);
+$chambre11 = new Chambre (11, 4, 300, false, $hotel1);
+$chambre12 = new Chambre (12, 2, 300, false, $hotel1);
+$chambre13 = new Chambre (13, 4, 300, false, $hotel1);
+$chambre14 = new Chambre (14, 4, 300, false, $hotel1);
+$chambre15 = new Chambre (15, 4, 300, false, $hotel1);
+$chambre16 = new Chambre (16, 2, 300, false,  $hotel3);
 $chambre17 = new Chambre (17, 2, 300, true,  $hotel1);
-$chambre18 = new Chambre (18, 2, 300, true,  $hotel1);
+$chambre18 = new Chambre (18, 2, 300, true,  $hotel3);
 $chambre19 = new Chambre (19, 2, 300, true,  $hotel2);
 $chambre20 = new Chambre (20, 1, 117, false, $hotel3);
 //Instanciation Réservations (Client $client, Chambre $chambre, DateTime $dateArrivee, DateTime $dateDepart)
@@ -67,5 +78,10 @@ $reservation2->afficherStatut();
 $reservation3->afficherStatut();
 $reservation4->afficherStatut();
 $reservation5->afficherStatut();
+
+
+$hotel1->getEtatChambre();
+$hotel2->getEtatChambre();
+$hotel3->getEtatChambre();
 
 ?>

@@ -75,11 +75,11 @@ class Reservation
     public function afficherStatut(){
 
         if($this->_chambre->getIsReserved()){
-            $this->_chambre->setIsReserved(true);
-            echo " La chambre " .$this->getChambre()->getNumChambre()." est réservé par ".$this->_client." du ".$this->_dateArrivee." au ".$this->_dateDepart ."<br>";
-    } else {
-        echo "La chambre " .$this->getChambre()->getNumChambre()." est disponible !<br>";
             $this->_chambre->setIsReserved(false);
+            echo " La chambre " .$this->getChambre()->getNumChambre()." est disponible.<br>";
+    } else {
+        echo "La chambre " .$this->getChambre()->getNumChambre()." est déjà réservée !<br>";
+            $this->_chambre->setIsReserved(true);
     }
     }
 

@@ -9,6 +9,7 @@ class Chambre{
     private Hotel $_hotel;
     private array $_reservations;
     private bool $_isReserved;
+    private array $_etatChambre;
 //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
     public function __construct(int $numChambre, int $nbLit, float $prix, bool $wifi, Hotel $hotel){
         $this->_numChambre = $numChambre;
@@ -21,6 +22,7 @@ class Chambre{
         // $chambre->addReservations();
         $this->_reservations =[];
         $this->_isReserved = false;
+        $this->_etatChambre = [];
     }
     
     public function getNumChambre()
@@ -112,5 +114,6 @@ class Chambre{
     return $this->_numChambre." (".$this->_nbLit." lits - ".$this->_prix." € - Wifi : $wifi)";
 }
 
+ 
 }
 ?>
