@@ -22,7 +22,7 @@ class Reservation
         $client->addReservations($this);
         $chambre->setIsReserved(true);
     } else {
-        echo "Réservation impossible, la chambre $chambre est déjà réservée !<br/>";
+        echo "La chambre ".$chambre." est déjà réservée !<br/>";
         return;
     }
     }
