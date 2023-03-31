@@ -113,7 +113,5 @@ class Chambre{
     $wifi = ($this->_wifi)? "oui" : "non";
     return $this->_numChambre." (".$this->_nbLit." lits - ".$this->_prix." € - Wifi : $wifi)";
 }
-
- 
 }
 ?>

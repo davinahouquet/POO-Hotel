@@ -75,15 +75,8 @@ class Reservation
         return $this->_chambre->getHotel().$this->_chambre. $this->_dateArrivee->format("d-m-Y")." au ".$this->_dateDepart->format("d-m-Y");  ;
     }
 
-    //Méthode qui calcule le prix total (prix de la chambre * nb de jours de réservation)
     public function getNbJours() : int {
-        return $this->_dateArrivee->diff($this->_dateDepart)->format("%a");
+       return $this->_dateArrivee->diff($this->_dateDepart)->format("%a");
     }
-
-    public function afficherprixTotal(): int {
-        $result = $this->getChambre()->getPrix() * $this->getNbJours();
-        return "Total : " .$result. "€";
-    }
-
 }
 ?>

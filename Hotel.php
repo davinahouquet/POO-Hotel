@@ -106,21 +106,20 @@ class Hotel
 public function afficherStatut(){
     foreach($this->_chambres as $chambre){
         if($chambre->getIsReserved()){
-        echo " La chambre " .$chambre->getNumChambre()." est déjà réservée.<br>";
+        echo " La chambre " .$chambre->getNumChambre()." est déjà réservée.<br><br>";
     }   else {
-        echo "La chambre " .$chambre->getNumChambre()." est disponible<br>";
+        echo "La chambre " .$chambre->getNumChambre()." est disponible<br><br>";
 }
 }
 
 }
 public function etatChambres() {
-    $result = $this;
+    $result = $this->_nom." <br>";
     foreach($this->_chambres as $chambre) {
-        $statut = ($chambre->getIsReserved()) ? "Réservée" : "Disponible";
-        $wifi = ($chambre->getWifi()) ? "<span uk-icon='icon: rss'></span>" : "";
-        $result .=  $chambre->getNumChambre().$chambre->getPrix().$wifi .$statut;
+        $statut = ($chambre->getIsReserved()) ? " Réservée " : " Disponible ";
+        $wifi = ($chambre->getWifi()) ? " oui " : "";
+        $result .=  "Chambre ".$chambre->getNumChambre().$chambre->getPrix()."€ ".$wifi." ".$statut."<br>";
     }
-    $result .= "</tbody></table>";
     return $result;
 }
 }

@@ -55,5 +55,13 @@ class Client{
         }
         return $result;
     }
+
+    public function afficherPrixTotal(){
+    $total = 0;
+    foreach($this->_reservations as $resa) {
+        $total += $resa->getNbJours() * $resa->getChambre()->getPrix();
+    }
+    return "Total : $total €<br/>";
+}
 }
 ?>
