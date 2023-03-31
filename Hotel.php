@@ -103,18 +103,16 @@ class Hotel
     return $result;
 }
 
-// public function afficherStatut(){
-//     foreach($this->_chambres as $chambre){
-//         if(!$chambre->getIsReserved()){
-//         $chambre->setIsReserved(false);
-//         echo " La chambre " .$chambre->getNumChambre()." est déjà réservée.<br>";
-//     }   else {
-//         $chambre->setIsReserved(true);
-//         echo "La chambre " .$chambre->getNumChambre()." est disponible<br>";
-// }
-// }
+public function afficherStatut(){
+    foreach($this->_chambres as $chambre){
+        if($chambre->getIsReserved()){
+        echo " La chambre " .$chambre->getNumChambre()." est déjà réservée.<br>";
+    }   else {
+        echo "La chambre " .$chambre->getNumChambre()." est disponible<br>";
+}
+}
 
-// }
+}
 public function getEtatChambres() {
     $result = $this;
     foreach($this->_chambres as $chambre) {
@@ -126,15 +124,5 @@ public function getEtatChambres() {
     $result .= "</tbody></table>";
     return $result;
 }
-    // public function getEtatChambre(){
-    //     $result = "Etat des chambres de l'Hôtel".$this->_nom." :<br>";
-    //     foreach($this->_chambres as $chambre){
-    //         $statut  =($chambre->getIsReserved()) ? "Reservée" : " Disponible";
-    //         $numChambre = ($chambre->getNumChambre());
-    //         $wifi = ($chambre->getWifi())? "oui" : "non";
-    //         $result .= "Chambre ".$numChambre." ".$chambre->getPrix()." ".$wifi." ".$statut."<br>";
-    //     }
-    // return $result;
-    // }
 }
 ?>
