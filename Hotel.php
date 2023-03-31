@@ -113,13 +113,12 @@ public function afficherStatut(){
 }
 
 }
-public function getEtatChambres() {
+public function etatChambres() {
     $result = $this;
     foreach($this->_chambres as $chambre) {
-        $status = ($chambre->getIsReserved()) ? "Réservée" : "Disponible";
-        $color = ($chambre->getIsReserved()) ? "danger" : "success";
+        $statut = ($chambre->getIsReserved()) ? "Réservée" : "Disponible";
         $wifi = ($chambre->getWifi()) ? "<span uk-icon='icon: rss'></span>" : "";
-        $result .=  $chambre->getNumChambre().$chambre->getPrix().$wifi.$color;
+        $result .=  $chambre->getNumChambre().$chambre->getPrix().$wifi .$statut;
     }
     $result .= "</tbody></table>";
     return $result;
