@@ -75,7 +75,7 @@ echo $client2->reservationsClient();
 echo $client1->afficherPrixTotal();
 echo $client2->afficherPrixTotal();
 echo $client3->afficherPrixTotal();
-//Reste à faire : Faire fonctionner l'état des chambres + mise en forme front
+
 echo $hotel1->afficherStatut();
 echo $hotel2->afficherStatut();
 echo $hotel3->afficherStatut();

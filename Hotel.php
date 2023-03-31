@@ -118,7 +118,7 @@ public function etatChambres() {
     foreach($this->_chambres as $chambre) {
         $statut = ($chambre->getIsReserved()) ? " Réservée " : " Disponible ";
         $wifi = ($chambre->getWifi()) ? " oui " : "";
-        $result .=  "Chambre ".$chambre->getNumChambre().$chambre->getPrix()."€ ".$wifi." ".$statut."<br>";
+        $result .=  "Chambre ".$chambre->getNumChambre().$chambre->getPrix()."€ Wifi : ".$wifi." ".$statut."<br>";
     }
     return $result;
 }
