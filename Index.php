@@ -13,7 +13,6 @@ spl_autoload_register('chargerClasse');
 //Instanciation Clients
 $client1 = new Client ("Virgile", "GIBELLO");
 $client2 = new Client ("Micka", "MURMANN");
-
 //Instanciation Hôtel
 $hotel1 = new Hotel ("Hilton **** Strasbourg", "10 route de la Gare 67000 STRASBOURG");
 $hotel2 = new Hotel ("Regent **** Paris", "61 rue Dauphine 75006, PARIS");
@@ -73,15 +72,14 @@ echo $client1->reservationsClient();
 echo $client2->reservationsClient();
 
 //Reste à faire : tester afficher le statut de la chambre + calcul prix total + mise en forme
-$reservation1->afficherStatut();
-$reservation2->afficherStatut();
-$reservation3->afficherStatut();
-$reservation4->afficherStatut();
-$reservation5->afficherStatut();
+// $hotel1->afficherStatut();
+// $hotel2->afficherStatut();
+// $hotel3->afficherStatut();
 
 
-$hotel1->getEtatChambre();
-$hotel2->getEtatChambre();
-$hotel3->getEtatChambre();
+
+$hotel1->getEtatChambres();
+$hotel2->getEtatChambres();
+$hotel3->getEtatChambres();
 
 ?>

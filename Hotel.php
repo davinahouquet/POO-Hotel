@@ -4,7 +4,7 @@ class Hotel
 {
     private string $_nom;
     private string $_adresse;
-    private array $_nbChambres;
+    private array $_chambres;
     private array $_reservations;
     // private array $_chambre;
 
@@ -12,7 +12,7 @@ class Hotel
     {
         $this->_nom = $nom;
         $this->_adresse = $adresse;
-        $this->_nbChambres = [];
+        $this->_chambres = [];
         $this->_reservations = [];
         // $this->_chambre = [];
     }
@@ -36,12 +36,12 @@ class Hotel
     }
     public function getNbChambres() : array
     {
-        return $this->_nbChambres;
+        return $this->_chambres;
     }
 
-    public function setNbChambres(array $nbChambres)
+    public function setNbChambres(array $chambres)
     {
-        $this->_nbChambres = $nbChambres;
+        $this->_chambres = $chambres;
 
         return $this;
     }
@@ -49,9 +49,9 @@ class Hotel
     {
         return $this->_nom;
     }
-    public function addChambre(Chambre $nbChambres)
+    public function addChambre(Chambre $chambres)
     {
-        $this->_nbChambres[] = $nbChambres;
+        $this->_chambres[] = $chambres;
     }
     //Méthode pour ajouter des réservations au tableau de réservations
     public function addReservations(Reservation $_reservations){
@@ -71,7 +71,7 @@ class Hotel
     //Méthode pour afficher le nombre de chambre dans l'hôtel
     public function afficherNbChambres()
     {
-        $result = "Nombre de chambres :" . count($this->_nbChambres);
+        $result = "Nombre de chambres :" . count($this->_chambres);
 
         return $result. "<br>";
     }
@@ -86,30 +86,55 @@ class Hotel
     //Méthode pour afficher le nombre de chambres dispos
     public function afficherNbChambresDispos()
     {
-        $result = count($this->_nbChambres) - count($this->_reservations);
+        $result = count($this->_chambres) - count($this->_reservations);
         return "Nombre de chambre(s) disponible(s):".$result."<br><br>";
     }
    //Méthode pour afficher les réservations d'un hôtel
    public function afficherReservations() : string {
-    $result = "<br>Réservations de l'Hôtel ".$this->_nom." <br> ";
+    $result = "<br>Réservations de l'Hôtel ".$this->_nom." <br><br> ";
     if(empty($this->_reservations)){
         $result .= "Aucune réservation<br>";
        } else {
         echo count($this->_reservations)." réservations<br>";
         foreach ($this->_reservations as $reservation){
-            $result .= $reservation->getClient()." - Chambre " .$reservation->getChambre()->getNumChambre()." - ".$reservation->getDateArrivee()." au ".$reservation->getDateDepart(). "<br>";
+            $result .= $reservation->getClient()." - Chambre " .$reservation->getChambre()->getNumChambre()." - ".$reservation->getDateArrivee()." au ".$reservation->getDateDepart(). "<br><br>";
        }
     }
     return $result;
 }
-    public function getEtatChambre(){
-        foreach($this->getNbChambres() as $chambre){
-            $statut  =($chambre->getIsReserved()) ? "Reservée" : " Disponible";
-            $numChambre = ($chambre->getNumChambre());
-            $wifi = ($chambre->getWifi())? "oui" : "non";
-            $result = $numChambre." ".$chambre->getPrix()." ".$wifi." ".$statut."<br>";
-        }
-        return $result;
+
+// public function afficherStatut(){
+//     foreach($this->_chambres as $chambre){
+//         if(!$chambre->getIsReserved()){
+//         $chambre->setIsReserved(false);
+//         echo " La chambre " .$chambre->getNumChambre()." est déjà réservée.<br>";
+//     }   else {
+//         $chambre->setIsReserved(true);
+//         echo "La chambre " .$chambre->getNumChambre()." est disponible<br>";
+// }
+// }
+
+// }
+public function getEtatChambres() {
+    $result = $this;
+    foreach($this->_chambres as $chambre) {
+        $status = ($chambre->getIsReserved()) ? "Réservée" : "Disponible";
+        $color = ($chambre->getIsReserved()) ? "danger" : "success";
+        $wifi = ($chambre->getWifi()) ? "<span uk-icon='icon: rss'></span>" : "";
+        $result .=  $chambre->getNumChambre().$chambre->getPrix().$wifi.$color;
     }
+    $result .= "</tbody></table>";
+    return $result;
+}
+    // public function getEtatChambre(){
+    //     $result = "Etat des chambres de l'Hôtel".$this->_nom." :<br>";
+    //     foreach($this->_chambres as $chambre){
+    //         $statut  =($chambre->getIsReserved()) ? "Reservée" : " Disponible";
+    //         $numChambre = ($chambre->getNumChambre());
+    //         $wifi = ($chambre->getWifi())? "oui" : "non";
+    //         $result .= "Chambre ".$numChambre." ".$chambre->getPrix()." ".$wifi." ".$statut."<br>";
+    //     }
+    // return $result;
+    // }
 }
 ?>
