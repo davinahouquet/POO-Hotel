@@ -9,23 +9,19 @@ class Reservation
     private DateTime $_dateDepart;
     // private float $_prix
 
-//Créer un count array pour afficher le nb de réservation
-// Créeer méthode qui calcule le prix total
-
     public function __construct(Client $client, Chambre $chambre, string $dateArrivee, string $dateDepart)
     {
         $this->_client = $client;
         $this->_chambre = $chambre;
-        // $this->_chambre->getHotel()->getReservations($this);
+        $chambre->addReservations($this);
         $this->_dateArrivee = new DateTime ($dateArrivee);
         $this->_dateDepart = new DateTime ($dateDepart);
         $hotel = $chambre->getHotel();
         $hotel->addReservations($this);
         $client->addReservations($this);
-        $chambre->addReservations($this);
-
-
+        // $chambre->setIsReserved(true);
     }
+
     public function getClient() : Client
     {
         return $this->_client;
@@ -74,6 +70,19 @@ class Reservation
         return $this->_chambre->getHotel().$this->_chambre. $this->_dateArrivee->format("d-m-Y")." au ".$this->_dateDepart->format("d-m-Y");  ;
     }
     
+
+    
+    public function afficherStatut(){
+
+        if($this->_chambre->getIsReserved()){
+            $this->_chambre->setIsReserved(true);
+            echo " La chambre " .$this->getChambre()->getNumChambre()." est réservé par ".$this->_client." du ".$this->_dateArrivee." au ".$this->_dateDepart ."<br>";
+    } else {
+        echo "La chambre " .$this->getChambre()->getNumChambre()." est disponible !<br>";
+            $this->_chambre->setIsReserved(false);
+    }
+    }
+
     //Méthode qui calcule le prix total (prix de la chambre * nb de jours de réservation)
     // public function afficherprixTotal($duree){
     //     $result = $this->getChambre()->getPrix() * $duree;

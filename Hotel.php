@@ -6,7 +6,7 @@ class Hotel
     private string $_adresse;
     private array $_nbChambres;
     private array $_reservations;
-
+    // private array $_chambre;
 
     public function __construct(string $nom, string $adresse)
     {
@@ -14,6 +14,7 @@ class Hotel
         $this->_adresse = $adresse;
         $this->_nbChambres = [];
         $this->_reservations = [];
+        // $this->_chambre = [];
     }
     public function getNom()
     {
@@ -60,10 +61,6 @@ class Hotel
     public function getReservations() : array{
         return $this->_reservations;
     }
-    // public function setReservations(Reservation $reservations){
-    //     array_push($this->_reservations, $reservations);
-    // }
-
     //Méthode pour afficher l'Hôtel
     public function afficherHotel()
     {
@@ -105,6 +102,6 @@ class Hotel
     }
     return $result;
 }
-}
 
+}
 ?>

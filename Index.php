@@ -61,7 +61,11 @@ echo $hotel3->afficherReservations();
 echo $client1->reservationsClient();
 echo $client2->reservationsClient();
 
-//Reste à faire : tester afficher le statut de la chambre + mise en forme
-$chambre1->afficherStatut();
+//Reste à faire : tester afficher le statut de la chambre + calcul prix total + mise en forme
+$reservation1->afficherStatut();
+$reservation2->afficherStatut();
+$reservation3->afficherStatut();
+$reservation4->afficherStatut();
+$reservation5->afficherStatut();
 
 ?>

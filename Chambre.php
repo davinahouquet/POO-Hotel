@@ -8,6 +8,7 @@ class Chambre{
     private bool $_statut;
     private Hotel $_hotel;
     private array $_reservations;
+    private bool $_isReserved;
 //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
     public function __construct(int $numChambre, int $nbLit, float $prix, bool $wifi, Hotel $hotel){
         $this->_numChambre = $numChambre;
@@ -17,7 +18,9 @@ class Chambre{
         $this->_statut = true;
         $this->_hotel = $hotel;
         $hotel->addChambre($this);
+        // $chambre->addReservations();
         $this->_reservations =[];
+        $this->_isReserved = false;
     }
     
     public function getNumChambre()
@@ -91,39 +94,23 @@ class Chambre{
 
         return $this;
     }
+    public function getIsReserved() : bool {
+        return $this->_isReserved;
+    }
 
+    public function setIsReserved(bool $reserved){
+        $this->_isReserved = $reserved;
+    }
+    
     public function addReservations(Reservation $_reservations){
         $this->_reservations[] = $_reservations;
     }
-    // public function afficherChambre($wifi){
-    //     $result = $this->getnumChambre(). " " .$this->getnbLit()." " .$this->getprix(). "€";
-    //     if($wifi == true){
-    //         $result .= "📶<br>";
-    //     } else {
-    //         $result .= " ";
-    //     }
-    // }
-    //pour les booléen, if true = afficher (ex logo wifi) si false = ne rien afficher
-    
-    //Méthode pour afficher le statut
-    public function afficherStatut(){
-        if(empty($reservations)){
-            $result = "Chambre" .$this->_numChambre." Disponible<br>";
-        } else {
-            $result = "Chambre" .$this->_numChambre." Indisponible<br>";
-        }
-        return $result;
-    }
-    // public function afficherStatut() : bool {
-    //     $statut = ($this->_statut)? "Disponible" : "Réservée";
-    //     return "Chambre".$this->_numChambre." ".$statut;
-    // }
 
     public function __toString()
-    {
-        $wifi = ($this->_wifi)? "oui" : "non";
-        return $this->_numChambre." (".$this->_nbLit." lits - ".$this->_prix." € - Wifi : $wifi)";
-    }
+{
+    $wifi = ($this->_wifi)? "oui" : "non";
+    return $this->_numChambre." (".$this->_nbLit." lits - ".$this->_prix." € - Wifi : $wifi)";
+}
 
 }
 ?>
