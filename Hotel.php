@@ -61,6 +61,7 @@ class Hotel
     public function getReservations() : array{
         return $this->_reservations;
     }
+
     //Méthode pour afficher l'Hôtel
     public function afficherHotel()
     {
@@ -114,13 +115,13 @@ public function afficherStatut(){
 
 }
 public function etatChambres() {
-    $result = $this->_nom." <br>";
+    $result = "<table><thead><tr><th colspan='2'>".$this->_nom."</th></tr><br></thead>";
     foreach($this->_chambres as $chambre) {
         $statut = ($chambre->getIsReserved()) ? " Réservée " : " Disponible ";
         $wifi = ($chambre->getWifi()) ? " oui " : "";
-        $result .=  "Chambre ".$chambre->getNumChambre().$chambre->getPrix()."€ Wifi : ".$wifi." ".$statut."<br>";
+        $result .=  "Chambre ".$chambre->getNumChambre().$chambre->getPrix()."€ Wifi : ".$wifi." ".$statut."<br><br>";
     }
-    return $result;
+    return $result."</table>";
 }
 }
 ?>

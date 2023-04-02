@@ -1,7 +1,3 @@
-<h1>POO Hotel</h1>
-<p>A partir de ces captures d’écran, réaliser l’application en POO permettant la gestion de réservations
-    de chambres par des clients dans différents hôtels :</p>
-<h2>Résultat</h2>
 <?php
 
 function chargerClasse($classe)
@@ -9,7 +5,25 @@ function chargerClasse($classe)
     require $classe . '.php';
 }
 spl_autoload_register('chargerClasse');
+?>
 
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
+    
+    <title>POO Hotel</title>
+</head>
+<body>
+    <div class="uk-container uk-container-expand">
+        
+        <h1>POO HOTEL</h1>
+
+<?php
 //Instanciation Clients
 $client1 = new Client ("Virgile", "GIBELLO");
 $client2 = new Client ("Micka", "MURMANN");
@@ -39,6 +53,7 @@ $chambre17 = new Chambre (17, 2, 300, true,  $hotel1);
 $chambre18 = new Chambre (18, 2, 300, true,  $hotel3);
 $chambre19 = new Chambre (19, 2, 300, true,  $hotel2);
 $chambre20 = new Chambre (20, 1, 117, false, $hotel3);
+
 //Instanciation Réservations (Client $client, Chambre $chambre, DateTime $dateArrivee, DateTime $dateDepart)
 $reservation1 = new Reservation ($client1, $chambre17, '01-01-2021', '01-01-2021');
 $reservation2 = new Reservation ($client2, $chambre3, '11-03-2021', '11-03-2021');
@@ -85,3 +100,4 @@ echo $hotel2->etatChambres();
 echo $hotel3->etatChambres();
 
 ?>
+</html>
