@@ -115,15 +115,7 @@ public function afficherStatut(){
 
 }
 public function etatChambres() {
-    $result = "<table><style>
-    table,
-    th,
-    td {
-      padding: 10px;
-      border: 1px solid black;
-      border-collapse: collapse;
-    }
-  </style><thead><tr><th colspan='2'>".$this->_nom."</th></tr><br></thead>";
+    $result = "<table><thead><tr><th colspan='2'>".$this->_nom."</th></tr><br></thead>";
     foreach($this->_chambres as $chambre) {
         $statut = ($chambre->getIsReserved()) ? " Réservée " : " Disponible ";
         $wifi = ($chambre->getWifi()) ? " 📶 " : "";
@@ -131,9 +123,8 @@ public function etatChambres() {
         tbody, th{
             padding: 10px;
       border: 1px solid black;
-      border-collapse: collapse;
     }</style>
-            <th>Chambre ".$chambre->getNumChambre()." ".$chambre->getPrix()." €  ".$wifi." ".$statut."</tr><br><br>";
+            <th>Chambre ".$chambre->getNumChambre()."  ".$chambre->getPrix()." €  ".$wifi." ".$statut."</tr><br><br>";
     }
     return $result."</tbody></table>";
 }
