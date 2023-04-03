@@ -15,7 +15,10 @@ spl_autoload_register('chargerClasse');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
-    <link rel="stylesheet" href="/styles.css">
+    <!-- /*https://cdnjs.com/libraries/font-awesome*/ -->
+    <!-- https://cdnjs.com/ -->
+    <link rel="stylesheet" href="style.css">
+
     <title>POO Hotel</title>
 </head>
 <body>
@@ -85,10 +88,12 @@ echo $hotel2->afficherReservations();
 echo $hotel3->afficherReservations();
 
 echo $client1->reservationsClient();
-echo $client2->reservationsClient();
-
 echo $client1->afficherPrixTotal();
+
+echo $client2->reservationsClient();
 echo $client2->afficherPrixTotal();
+
+echo $client3->reservationsClient();
 echo $client3->afficherPrixTotal();
 
 echo $hotel1->afficherStatut();

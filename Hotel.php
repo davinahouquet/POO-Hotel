@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="style.css">
+
 <?php
 
 class Hotel
@@ -65,14 +67,14 @@ class Hotel
     //Méthode pour afficher l'Hôtel
     public function afficherHotel()
     {
-        $result = $this->getnom() . " " . $this->getadresse();
-        return $result . "<br>";
+        $result = "<h2>".$this->getnom() . "</h2> " . $this->getadresse();
+        return $result. "<br>";
     }
 
     //Méthode pour afficher le nombre de chambre dans l'hôtel
     public function afficherNbChambres()
     {
-        $result = "Nombre de chambres :" . count($this->_chambres);
+        $result = "Nombre de chambres : " . count($this->_chambres);
 
         return $result. "<br>";
     }
@@ -92,11 +94,11 @@ class Hotel
     }
    //Méthode pour afficher les réservations d'un hôtel
    public function afficherReservations() : string {
-    $result = "<br>Réservations de l'Hôtel ".$this->_nom." <br><br> ";
+    $result = "<br><h3>Réservations de l'Hôtel ".$this->_nom."</h3><br><br> ";
     if(empty($this->_reservations)){
         $result .= "Aucune réservation<br>";
        } else {
-        echo count($this->_reservations)." réservations<br>";
+       echo count($this->_reservations)." réservations<br>";
         foreach ($this->_reservations as $reservation){
             $result .= $reservation->getClient()." - Chambre " .$reservation->getChambre()->getNumChambre()." - ".$reservation->getDateArrivee()." au ".$reservation->getDateDepart(). "<br><br>";
        }
@@ -107,15 +109,16 @@ class Hotel
 public function afficherStatut(){
     foreach($this->_chambres as $chambre){
         if($chambre->getIsReserved()){
-        echo " La chambre " .$chambre->getNumChambre()." est déjà réservée.<br><br>";
+        echo " La chambre " .$chambre->getNumChambre()." est déjà réservée.<br>";
     }   else {
-        echo "La chambre " .$chambre->getNumChambre()." est disponible<br><br>";
+        echo "La chambre " .$chambre->getNumChambre()." est disponible<br>";
 }
 }
 
 }
 public function etatChambres() {
-     $result = "<h3>Statuts des chambres de <strong>$this</strong></h3>";
+    $result = "<h3>Statuts des chambres de <strong>$this</strong></h3>";
+    // https://getuikit.com/docs/table
     $result .= "<table class='uk-table uk-table-striped'>
                     <thead>
                         <tr>
@@ -127,13 +130,12 @@ public function etatChambres() {
                     </thead>
                     <tbody>";
     foreach($this->_chambres as $chambre) {
-        $statut = ($chambre->getIsReserved()) ? " Réservée " : " Disponible ";
+        $statut = ($chambre->getIsReserved()) ? "<td width='100px' bgcolor='#ea5165';'>Réservée</style></td>" : "<td color='white' bgcolor='#c1ff69'>Disponible</td>";
         $wifi = ($chambre->getWifi()) ? " 📶 " : "";
         $result .=  "<tr>
                         <td>Chambre</th> ".$chambre->getNumChambre()."</td>
                         <td>".$chambre->getPrix()." €</td>
-                        <td>  ".$wifi."</td>
-                        <td><span class='uk-label uk-label>".$statut." </span></td><br><br>";
+                        <td>  ".$wifi."</td>".$statut;
     }
     return $result."</tbody></table>";
 }

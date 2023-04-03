@@ -76,7 +76,8 @@ class Reservation
     }
 
     public function getNbJours() : int {
-       return $this->_dateArrivee->diff($this->_dateDepart)->format("%a");
+       $result = $this->_dateArrivee->diff($this->_dateDepart)->format("%a");
+       return $result;
     }
 }
 ?>
